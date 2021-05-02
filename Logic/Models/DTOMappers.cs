@@ -19,5 +19,15 @@ namespace UPB.Practice4.Logic.Models
             }
             return mappedGroups;
         }
+
+        public static Data.Models.Group MapGroup(Group group)
+        {
+            Data.Models.Group groupToAdd = new Data.Models.Group();
+            groupToAdd.Id = group.Id;
+            groupToAdd.Name = group.Name;
+            groupToAdd.AvailableSlots = group.AvailableSlots;
+
+            return groupToAdd;
+        }
     }
 }

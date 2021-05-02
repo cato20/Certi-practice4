@@ -16,17 +16,23 @@ namespace UPB.Practice4.Logic.Managers
             List<Data.Models.Group> groups = _dbContext.GetAll();
             return DTOMappers.MapGroups(groups);
         }
-        public Group CreateGroup(string name, int availableSlots)
+        public Group CreateGroup(Group group)
         {
-            return new Group();
+            Data.Models.Group groupToAdd = DTOMappers.MapGroup(group);
+            _dbContext.AddGroup(groupToAdd);
+            return group;
         }
         public Group UpdateGroup(Group group)
         {
-            return new Group();
+            Data.Models.Group groupToUpdate = DTOMappers.MapGroup(group);
+            _dbContext.UpdateGroup(groupToUpdate);
+            return group;
         }
-        public Group DeleteGroup()
+        public Group DeleteGroup(Group group)
         {
-            return new Group();
+            Data.Models.Group groupToDelete = DTOMappers.MapGroup(group);
+            _dbContext.DeleteGroup(groupToDelete);
+            return group;
         }
 
 
