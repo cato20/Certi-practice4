@@ -5,14 +5,45 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
+using UPB.Practice4.Logic.Managers;
+using UPB.Practice4.Logic.Models;
+
 namespace Practice4.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/api/groups")]
+
     public class GroupController : ControllerBase
     {
+        private readonly GroupManager _groupManager;
 
+        public GroupController()
+        {
+            _groupManager = new GroupManager();
+        }
 
+        [HttpGet]
+        public List<Group> GetGroups()
+        {
+            return _groupManager.GetAllGroups();
+        }
+        [HttpPost]
+        public Group CreateGroup([FromBody] string name, int available)
+        {
+            return _groupManager.CreateGroup(name, available);
+        }
 
+        [HttpPut]
+
+        public Group UpdateGroup([FromBody] Group group)
+        {
+            return _groupManager.UpdateGroup(group);
+        }
+
+        [HttpDelete]
+        public Group DeleteGroup([FromBody] Group group)
+        {
+            return _groupManager.DeleteGroup(group);
+        }
     }
 }
