@@ -28,9 +28,9 @@ namespace Practice4.Controllers
             return _groupManager.GetAllGroups();
         }
         [HttpPost]
-        public Group CreateGroup([FromBody] string name, int available)
+        public Group CreateGroup([FromBody] Group group)
         {
-            return _groupManager.CreateGroup(name, available);
+            return _groupManager.CreateGroup(group);
         }
 
         [HttpPut]
