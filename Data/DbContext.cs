@@ -22,7 +22,7 @@ namespace UPB.Practice4.Data
             Group foundGroup = GroupTable.Find(group => group.Id == groupUpdate.Id);
 
             foundGroup.Name = groupUpdate.Name;
-            foundGroup.Available = groupUpdate.Available;
+            foundGroup.AvailableSlots = groupUpdate.AvailableSlots;
 
             return foundGroup;
         }
