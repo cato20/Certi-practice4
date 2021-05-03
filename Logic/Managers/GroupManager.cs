@@ -6,6 +6,7 @@ namespace UPB.Practice4.Logic.Managers
 {
     public class GroupManager : IGroupManager
     {
+        private int id = 0;
         private readonly IDbContext _dbContext;
         public GroupManager(IDbContext dbContext)
         {
@@ -18,8 +19,27 @@ namespace UPB.Practice4.Logic.Managers
         }
         public Group CreateGroup(Group group)
         {
-            Data.Models.Group groupToAdd = DTOMappers.MapGroup(group);
-            _dbContext.AddGroup(groupToAdd);
+            id += 1;
+            string idGroup = "Group-";
+            string idNum = "";
+            if (id < 10)
+            {
+                idNum = "00";
+            }
+            else if (id < 100)
+            {
+                idNum = "0";
+            }
+            else
+            {
+                idNum = "";
+            }
+            group.Id = idGroup + idNum + id;
+            if (group.Name.Length <= 50 && group.Name != null)
+            {
+                Data.Models.Group groupToAdd = DTOMappers.MapGroup(group);
+                _dbContext.AddGroup(groupToAdd);
+            }
             return group;
         }
         public Group UpdateGroup(Group group)
