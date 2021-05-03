@@ -15,11 +15,11 @@ namespace Practice4.Controllers
 
     public class GroupController : ControllerBase
     {
-        private readonly GroupManager _groupManager;
+        private readonly IGroupManager _groupManager;
 
-        public GroupController()
+        public GroupController(IGroupManager groupManager)
         {
-            _groupManager = new GroupManager();
+            _groupManager = groupManager;
         }
 
         [HttpGet]

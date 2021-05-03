@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
+using UPB.Practice4.Logic.Managers;
+using UPB.Practice4.Data;
 namespace Practice4
 {
     public class Startup
@@ -26,6 +28,8 @@ namespace Practice4
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IGroupManager, GroupManager>();
+            services.AddSingleton<IDbContext, DbContext>();
             services.AddControllers();
             services.AddSwaggerGen(p =>
             {

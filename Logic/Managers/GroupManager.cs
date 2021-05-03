@@ -6,10 +6,10 @@ namespace UPB.Practice4.Logic.Managers
 {
     public class GroupManager : IGroupManager
     {
-        private readonly DbContext _dbContext;
-        public GroupManager()
+        private readonly IDbContext _dbContext;
+        public GroupManager(IDbContext dbContext)
         {
-            _dbContext = new DbContext();
+            _dbContext = dbContext;
         }
         public List<Group> GetAllGroups()
         {
