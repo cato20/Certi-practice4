@@ -4,7 +4,7 @@ using UPB.Practice4.Logic.Models;
 
 namespace UPB.Practice4.Logic.Managers
 {
-    public class GroupManager
+    public class GroupManager : IGroupManager
     {
         private readonly DbContext _dbContext;
         public GroupManager()

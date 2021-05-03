@@ -5,7 +5,7 @@ using UPB.Practice4.Data.Models;
 
 namespace UPB.Practice4.Data
 {
-    public class DbContext
+    public class DbContext : IDbContext
     {
         public List<Group> GroupTable { get; set; }
         public DbContext()
